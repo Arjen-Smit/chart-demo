@@ -2,9 +2,65 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no ">
     <title>Chart Demo for bars</title>
+    <script src="node_modules/chart.js/dist/Chart.js"></script>
   </head>
   <body>
-    Demo time
+
+    <!-- <div style='width:100%;height: 400px;postion: relative'> -->
+      <canvas id="myChart" style='width:100%;min-height:400px;max-height:400px;min-width:800px;overflow:auto'></canvas>
+    <!-- </div> -->
+<script>
+
+Chart.defaults.global.responsive = false;
+Chart.defaults.global.maintainAspectRatio = false;
+var ctx = document.getElementById("myChart");
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ["2016-P01", "2016-P02", "2016-P03", "2016-P04", "2016-P05", "2016-P06", "2016-P07", "2016-P08", "2016-P09", "2016-P10", "2016-P11", "2016-P12"],
+        datasets: [
+            {
+                backgroundColor: '#8DC42F',
+                data: [0, 0, 0, 0, .5, 0, 0, .5 ,0, 0, 0, 0]
+            },
+            {
+                backgroundColor: '#44a2db',
+                data: [50, 50, 40, 50, 49.5, 50, 40, 49.5, 50, 50, 40, 50]
+            },
+            {
+                backgroundColor: '#F5F5F5',
+                data: [0, 0, 10, 0,0, 0, 10, 0,0, 0, 10, 0]
+            },
+            {
+                backgroundColor: '#FCC024',
+                data: [20, 15, 0, 10,20, 15, 0, 10,20, 15, 0, 10]
+            }
+        ]
+    },
+    options: {
+        legend: {
+          display: false
+        },
+        tooltips: {
+          enabled: false
+        },
+        scales: {
+            yAxes: [{
+                stacked: true,
+                ticks: {
+                    max: 80,
+                    beginAtZero:true
+
+                }
+            }],
+            xAxes: [{
+              stacked: true
+            }]
+        }
+    }
+});
+</script>
   </body>
 </html>
